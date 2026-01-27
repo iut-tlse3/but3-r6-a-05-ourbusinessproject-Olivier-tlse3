@@ -1,21 +1,30 @@
 package ourbusinessproject;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+@Entity
 public class Enterprise {
-    
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @NotBlank
     private String name;
+
+    @Size(min =10)
+    private String description;
 
     @NotBlank
     private String contactname;
     @NotBlank @Email
     private String contactemail;
 
-    @Size(min =10)
-    private String description;
     
     public Enterprise(String name, String contactname, String contactemail, String description) {
         this.name = name;
@@ -25,8 +34,16 @@ public class Enterprise {
     }
     
     public Enterprise() {}
-    
-    
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
