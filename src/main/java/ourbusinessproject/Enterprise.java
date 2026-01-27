@@ -21,15 +21,15 @@ public class Enterprise {
     private String description;
 
     @NotBlank
-    private String contactname;
+    private String contactName;
     @NotBlank @Email
-    private String contactemail;
+    private String contactEmail;
 
     
-    public Enterprise(String name, String contactname, String contactemail, String description) {
+    public Enterprise(String name, String description, String contactName, String contactEmail ) {
         this.name = name;
-        this.contactname = contactname;
-        this.contactemail = contactemail;
+        this.contactName = contactName;
+        this.contactEmail = contactEmail;
         this.description = description;
     }
     
@@ -60,16 +60,18 @@ public class Enterprise {
     }
 
     public String getContactName() {
-        return contactname;
+        return contactName;
     }
     public void setContactName(String contactName) {
-        this.contactname = contactName;
+        this.contactName = contactName;
     }
 
     public String getContactEmail() {
-        return contactemail;
+        return contactEmail;
     }
     public void setContactEmail(String contactemail) {
-        this.contactemail = contactemail;
+        this.contactEmail = contactemail;
     }
+
+
 }
