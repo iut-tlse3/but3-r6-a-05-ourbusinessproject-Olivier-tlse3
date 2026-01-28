@@ -1,12 +1,12 @@
 package ourbusinessproject;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
+import java.util.Collection;
 
 @Entity
 public class Enterprise {
@@ -24,6 +24,10 @@ public class Enterprise {
     private String contactName;
     @NotBlank @Email
     private String contactEmail;
+
+    @NotNull
+    @OneToMany(mappedBy = "enterprise")
+    private Collection<Project> projects;
 
     
     public Enterprise(String name, String description, String contactName, String contactEmail ) {

@@ -1,9 +1,6 @@
 package ourbusinessproject;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -20,7 +17,16 @@ public class Project {
 
     private String description;
 
+    @NotNull @ManyToOne
+    private Enterprise enterprise;
+
+
     public Project(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+    public Project(String title, String description, Enterprise enterprise) {
+        this.enterprise = enterprise;
         this.title = title;
         this.description = description;
     }
@@ -61,4 +67,14 @@ public class Project {
     public Long getId() {
         return id;
     }
+
+
+    public Enterprise getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
 }
