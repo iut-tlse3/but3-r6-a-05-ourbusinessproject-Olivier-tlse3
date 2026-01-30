@@ -14,7 +14,10 @@ public class InitializationService {
 
     @Transactional
     public void initProjects() {
-
+        //Lorsqu'un des Projets ont une des informations est incorrecte (ex: null),
+        // toute la construction transactionnelle "échoue"
+        //Cela est dû à la nature d'un processus transactionnelle,
+        // qui rollback tout processus jusque là effectué en cas d'erreur
         enterprise1 = enterpriseprojectservice.newEnterprise(
                 "entreprise1",
                 "la premiere",
